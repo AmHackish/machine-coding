@@ -34,8 +34,8 @@ public:
         }
     }
 
-    int dice_roll() {
-        int x = abs(rand()%5)+1;
+    int dice_roll(int num = 5) {
+        int x = abs(rand()%num)+1;
         return x;
     }
 
