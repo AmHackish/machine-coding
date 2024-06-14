@@ -25,7 +25,19 @@ public:
             b_user->user_current_balance -= share_PP;
             cout << b_user->user_current_balance  << " ";
             if(len_user->user_id != b_user->user_id)
-                b_user->owed_users[len_user->user_id] = b_user->owed_users[len_user->user_id] + share_PP;
+            {
+                double b_owed_u = b_user->owed_users[len_user->user_id] + share_PP;
+                double u_owed_b = len_user->owed_users[b_user->user_id];
+                
+                if(b_owed_u > u_owed_b) {
+                    b_user->owed_users[len_user->user_id] = b_owed_u - u_owed_b;
+                    len_user->owed_users[b_user->user_id] = 0;
+                }
+                else {
+                    len_user->owed_users[b_user->user_id] = u_owed_b - b_owed_u;
+                    b_user->owed_users[len_user->user_id] = 0;
+                }
+            }
         }
     }
 
@@ -42,7 +54,19 @@ public:
             b_user->user_current_balance -= share_PP;
             cout << b_user->user_current_balance  << " ";
             if(len_user->user_id != b_user->user_id)
-                b_user->owed_users[len_user->user_id] = b_user->owed_users[len_user->user_id] + share_PP;
+            {
+                double b_owed_u = b_user->owed_users[len_user->user_id] + share_PP;
+                double u_owed_b = len_user->owed_users[b_user->user_id];
+                
+                if(b_owed_u > u_owed_b) {
+                    b_user->owed_users[len_user->user_id] = b_owed_u - u_owed_b;
+                    len_user->owed_users[b_user->user_id] = 0;
+                }
+                else {
+                    len_user->owed_users[b_user->user_id] = u_owed_b - b_owed_u;
+                    b_user->owed_users[len_user->user_id] = 0;
+                }
+            }
         }
     }
 
@@ -58,7 +82,19 @@ public:
             double share_PP = exp->percentage_share[i];
             b_user->user_current_balance -= exp->percentage_share[i];
             if(len_user->user_id != b_user->user_id)
-                b_user->owed_users[len_user->user_id] = b_user->owed_users[len_user->user_id] + share_PP;
+            {
+                double b_owed_u = b_user->owed_users[len_user->user_id] + share_PP;
+                double u_owed_b = len_user->owed_users[b_user->user_id];
+                
+                if(b_owed_u > u_owed_b) {
+                    b_user->owed_users[len_user->user_id] = b_owed_u - u_owed_b;
+                    len_user->owed_users[b_user->user_id] = 0;
+                }
+                else {
+                    len_user->owed_users[b_user->user_id] = u_owed_b - b_owed_u;
+                    b_user->owed_users[len_user->user_id] = 0;
+                }
+            }
         }
     }
 };
